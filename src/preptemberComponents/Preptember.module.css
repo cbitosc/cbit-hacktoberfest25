@@ -1,0 +1,71 @@
+/* ------------------------------
+   1. Atkinson Hyperlegible (from Google Fonts)
+------------------------------- */
+/* Already loaded via <link> in index.html:
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+*/
+
+/* ------------------------------
+   Typography Classes
+------------------------------- */
+.eyebrow {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff; /* Space White */
+}
+
+.headline {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-weight: 700;
+  color: #ffffff; /* Space White */
+}
+
+.body {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-weight: 400;
+  color: #ffffff; /* Space White */
+  line-height: 1.6;
+}
+
+.bodyEm {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #a0a0ff; /* Lavender */
+}
+
+.textLink {
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff; /* Space White */
+}
+
+/* ------------------------------
+   Gradient Text Effect
+------------------------------- */
+.gradientText {
+  background: linear-gradient(
+    90deg,
+    #c2c2ff, /* Melrose */
+    #a0a0ff, /* Lavender */
+    #d0cce3  /* Space Dust */
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 6s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

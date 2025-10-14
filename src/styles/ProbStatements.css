@@ -1,0 +1,159 @@
+/* Make sure you included this in index.css or index.html:
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Atkinson+Hyperlegible+Mono:wght@400;700&display=swap" rel="stylesheet">
+*/
+
+/* ===== Problem Section ===== */
+.prob-section {
+  width: 100vw;
+  min-height: 50vh;
+  background: url('../assets/probbg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.prob-container {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  padding: 2.5rem;
+  border-radius: 16px;
+  background: rgba(28, 28, 63, 0.8);
+  border: 1px solid #C2C2FF;
+  box-shadow: 0 16px 40px rgba(28, 28, 63, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* Headlines */
+.prob-container h2 {
+  color: #FFFFFF;
+  font-size: 2.5rem;
+  font-weight: 700; /* match Google Fonts bold */
+  margin-bottom: 2rem;
+  font-family: 'Atkinson Hyperlegible Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  text-shadow: 
+    4px 4px 0px #1C1C3F,
+    8px 8px 0px #5A5AB5;
+  transition: transform 0.3s ease;
+}
+
+/* Body text */
+.prob-subtitle {
+  color: #F2F4F7;
+  font-size: 1.05rem;
+  opacity: 0.95;
+  margin-bottom: 1.5rem;
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  font-weight: 400; /* regular */
+}
+
+.prob-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* Text links */
+.prob-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #1f1f3d;
+  color: #fff;
+  border-radius: 0;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+/* Base style for corners */
+.prob-button::before,
+.prob-button::after,
+.prob-button span::before,
+.prob-button span::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Top-left corner */
+.prob-button::before {
+  top: 0;
+  left: 0;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+}
+
+/* Bottom-right corner */
+.prob-button::after {
+  bottom: 0;
+  right: 0;
+  border-bottom: 2px solid transparent;
+  border-right: 2px solid transparent;
+}
+
+/* Top-right corner */
+.prob-button span::before {
+  top: 0;
+  right: 0;
+  border-top: 2px solid transparent;
+  border-right: 2px solid transparent;
+}
+
+/* Bottom-left corner */
+.prob-button span::after {
+  bottom: 0;
+  left: 0;
+  border-bottom: 2px solid transparent;
+  border-left: 2px solid transparent;
+}
+
+/* Hover effect: color appears */
+.prob-button:hover {
+  background: #2b2b50;
+  color: #8b5cf6;
+}
+
+.prob-button:hover::before,
+.prob-button:hover::after,
+.prob-button:hover span::before,
+.prob-button:hover span::after {
+  border-color: #8b5cf6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .prob-section {
+    min-height: 40vh;
+    padding: 2rem 1rem;
+  }
+
+  .prob-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .prob-container h2 {
+    font-size: 1.75rem;
+  }
+
+  .prob-subtitle {
+    font-size: 1rem;
+  }
+}

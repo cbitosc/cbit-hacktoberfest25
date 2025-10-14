@@ -1,0 +1,227 @@
+.about-section {
+  width: 100vw;
+  min-height: 100vh;
+  background: 
+    radial-gradient(ellipse at center top, rgba(138, 134, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at center bottom, rgba(194, 194, 255, 0.05) 0%, transparent 40%),
+    #1C1C3F;
+  padding: 5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-20px) rotate(180deg); 
+  }
+}
+
+/* Modernize the floating animation */
+@keyframes hexFloat {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1); 
+    opacity: 0.05;
+  }
+  50% { 
+    transform: translate(15px, -10px) scale(1.1); 
+    opacity: 0.1;
+  }
+}
+
+.about-container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+.about-container h2 {
+  color: #FFFFFF;
+  font-size: 3rem;
+  font-weight: 800;
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 3rem;
+  text-shadow: 3px 3px #493F70, 6px 6px #1C1C3F;
+  position: relative;
+}
+
+.about-container h2 > span {
+  color: #8A86FF;
+  text-shadow: 3px 3px #403F7D, 4px 4px #1C1C3F;
+}
+
+@media screen and (max-width: 600px) {
+  .about-container h2 {
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.about-container h2::after {
+  content: "▩▩▩";
+  display: block;
+  font-size: 1rem;
+  color: #8A86FF;
+  margin-top: 0.5rem;
+  letter-spacing: 0.3rem;
+}
+
+.event-description {
+  color: #C2C2FF;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin: 0 auto 3rem;
+  max-width: 700px;
+  font-weight: 400;
+  text-align: center;
+}
+
+/* Refined Event Details Grid */
+.event-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 0;
+}
+
+/* Detail Item Card Styling */
+.detail-item {
+  background: #1C1C3F;
+  padding: 2rem;
+  border-radius: 12px; /* Rounded corners for a more modern feel */
+  text-align: left;
+  border: 2px solid #493F70;
+  box-shadow: 0px 4px 20px rgba(138, 134, 255, 0.2);
+  opacity: 0;
+  transform: scale(0.8) translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: transform, opacity;
+}
+
+.detail-item.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.detail-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 40px rgba(138, 134, 255, 0.3);
+}
+
+.detail-item .label {
+  font-weight: 700;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  display: block;
+  text-shadow: 2px 2px 0px #493F70;
+}
+
+.detail-item .value {
+  color: #C2C2FF;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 3rem 1rem;
+  }
+
+  .about-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .event-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .detail-item {
+    padding: 1.5rem;
+  }
+
+  .highlights {
+    margin-top: 3rem;
+    padding-top: 2rem;
+  }
+
+  .highlights-grid {
+    gap: 1.5rem;
+  }
+}
+
+/* Highlights Section */
+.highlights {
+  margin-top: 4rem;
+  padding-top: 3rem;
+  border-top: 2px solid #493F70;
+  opacity: 0.6;
+}
+
+.highlights-title {
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-family: 'Atkinson Hyperlegible', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 2.5rem;
+  text-shadow: 3px 3px #493F70, 6px 6px #1C1C3F;
+  position: relative;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.highlight-card {
+  background: #1C1C3F;
+  border: 2px solid #493F70;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0px 4px 20px rgba(138, 134, 255, 0.3);
+  border-radius: 12px;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.highlight-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 0px 8px 40px rgba(138, 134, 255, 0.4);
+}
+
+.highlight-card .stat {
+  font-weight: 700;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  display: block;
+  text-shadow: 2px 2px 0px #493F70;
+}
+
+.highlight-card .label {
+  color: #C2C2FF;
+  font-size: 1rem;
+  line-height: 1.6;
+}

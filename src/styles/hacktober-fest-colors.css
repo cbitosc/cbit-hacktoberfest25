@@ -1,0 +1,21 @@
+/* hacktoberfest-colors.css */
+
+:root {
+  /* Main Colors */
+  --void: #1c1c3f;
+  --space-white: #ffffff;
+
+  /* Neutral & Backgrounds */
+  --space-gray: #f2f4f7;
+  --space-dust: #d0cce3;
+  --space-haze: #5e577c;
+
+  /* Accent & Vibrants */
+  --melrose: #c2c2ff;
+  --lavender: #a0a0ff;
+  --blue-violet: #5a5ab5;
+  --east-bay: #403f7d;
+
+  /* Gradient */
+  --brand-gradient: linear-gradient(135deg, #5a5ab5, #c2c2ff);
+}
