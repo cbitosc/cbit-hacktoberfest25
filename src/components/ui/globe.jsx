@@ -215,6 +215,8 @@ export function World(props) {
       style={{
         background: "transparent",
         pointerEvents: isMobile ? "none" : "auto",
+        height: isMobile ? "400px" : "500px",
+        width: "100%",
       }}
     >
       <WebGLRendererConfig />
@@ -236,8 +238,8 @@ export function World(props) {
       />
       <Globe {...props} />
       <OrbitControls
-        enablePan={!isMobile}
-        enableZoom={!isMobile}
+        enablePan={false}
+        enableZoom={false}
         enableRotate={!isMobile}
         minDistance={cameraZ}
         maxDistance={cameraZ}
