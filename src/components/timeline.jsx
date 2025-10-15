@@ -35,7 +35,7 @@ const timelineData = [
   },
   {
     id: 2,
-    date: "14th October 2025",
+    date: "15th October 2025",
     title: "Registration Opens",
     description:
       "The registrations for CBIT Hacktoberfest 2025 opens for all the students.",
