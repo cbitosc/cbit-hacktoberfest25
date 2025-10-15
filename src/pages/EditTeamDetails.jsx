@@ -73,9 +73,9 @@ const EditTeamDetails = () => {
   const registrationState = location.state?.registration;
 
   // Animated background particles
-   useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -153,7 +153,10 @@ const EditTeamDetails = () => {
             // Handle both array and string formats for backward compatibility
             if (Array.isArray(registrationData.techStack)) {
               return registrationData.techStack;
-            } else if (typeof registrationData.techStack === 'string' && registrationData.techStack) {
+            } else if (
+              typeof registrationData.techStack === "string" &&
+              registrationData.techStack
+            ) {
               try {
                 const parsed = JSON.parse(registrationData.techStack);
                 return Array.isArray(parsed) ? parsed : [];
@@ -166,26 +169,62 @@ const EditTeamDetails = () => {
           teammates: registrationData.teammates.map((teammate) => {
             const storedDegree = teammate.degree || "";
             const storedBranch = teammate.branch || "";
-            
+
             // List of known degree types
-            const knownDegrees = ["B.Tech", "B.E", "BCA", "B.Sc", "M.Tech", "MCA", "M.Sc"];
-            const degreeType = knownDegrees.includes(storedDegree) ? storedDegree : (storedDegree ? "Other" : "");
-            const customDegree = knownDegrees.includes(storedDegree) ? "" : storedDegree;
-            
+            const knownDegrees = [
+              "B.Tech",
+              "B.E",
+              "BCA",
+              "B.Sc",
+              "M.Tech",
+              "MCA",
+              "M.Sc",
+            ];
+            const degreeType = knownDegrees.includes(storedDegree)
+              ? storedDegree
+              : storedDegree
+              ? "Other"
+              : "";
+            const customDegree = knownDegrees.includes(storedDegree)
+              ? ""
+              : storedDegree;
+
             // List of known branch types
-            const knownBranches = ["AIDS", "AIML", "Bio-Tech", "Chemical", "Civil", "CSE", "CSE-AIML", "ECE", "ECE-EVL", "EEE", "IT", "IoT", "Mechanical"];
-            const branchType = knownBranches.includes(storedBranch) ? storedBranch : (storedBranch ? "Other" : "");
-            const customBranch = knownBranches.includes(storedBranch) ? "" : storedBranch;
-            
+            const knownBranches = [
+              "AIDS",
+              "AIML",
+              "Bio-Tech",
+              "Chemical",
+              "Civil",
+              "CSE",
+              "CSE-AIML",
+              "ECE",
+              "ECE-EVL",
+              "EEE",
+              "IT",
+              "IoT",
+              "Mechanical",
+            ];
+            const branchType = knownBranches.includes(storedBranch)
+              ? storedBranch
+              : storedBranch
+              ? "Other"
+              : "";
+            const customBranch = knownBranches.includes(storedBranch)
+              ? ""
+              : storedBranch;
+
             return {
               name: teammate.name || "",
               college: teammate.college || "",
               collegeType:
-                teammate.college === "Chaitanya Bharathi Institute of Technology"
+                teammate.college ===
+                "Chaitanya Bharathi Institute of Technology"
                   ? "CBIT"
                   : "Other",
               customCollege:
-                teammate.college === "Chaitanya Bharathi Institute of Technology"
+                teammate.college ===
+                "Chaitanya Bharathi Institute of Technology"
                   ? ""
                   : teammate.college || "",
               degree: storedDegree,
@@ -216,24 +255,76 @@ const EditTeamDetails = () => {
             degree: registrationData.leader?.degree || "",
             degreeType: (() => {
               const storedDegree = registrationData.leader?.degree || "";
-              const knownDegrees = ["B.Tech", "B.E", "BCA", "B.Sc", "M.Tech", "MCA", "M.Sc"];
-              return knownDegrees.includes(storedDegree) ? storedDegree : (storedDegree ? "Other" : "");
+              const knownDegrees = [
+                "B.Tech",
+                "B.E",
+                "BCA",
+                "B.Sc",
+                "M.Tech",
+                "MCA",
+                "M.Sc",
+              ];
+              return knownDegrees.includes(storedDegree)
+                ? storedDegree
+                : storedDegree
+                ? "Other"
+                : "";
             })(),
             customDegree: (() => {
               const storedDegree = registrationData.leader?.degree || "";
-              const knownDegrees = ["B.Tech", "B.E", "BCA", "B.Sc", "M.Tech", "MCA", "M.Sc"];
+              const knownDegrees = [
+                "B.Tech",
+                "B.E",
+                "BCA",
+                "B.Sc",
+                "M.Tech",
+                "MCA",
+                "M.Sc",
+              ];
               return knownDegrees.includes(storedDegree) ? "" : storedDegree;
             })(),
             yearOfStudy: registrationData.leader?.yearOfStudy || "",
             branch: registrationData.leader?.branch || "",
             branchType: (() => {
               const storedBranch = registrationData.leader?.branch || "";
-              const knownBranches = ["AIDS", "AIML", "Bio-Tech", "Chemical", "Civil", "CSE", "CSE-AIML", "ECE", "ECE-EVL", "EEE", "IT", "IoT", "Mechanical"];
-              return knownBranches.includes(storedBranch) ? storedBranch : (storedBranch ? "Other" : "");
+              const knownBranches = [
+                "AIDS",
+                "AIML",
+                "Bio-Tech",
+                "Chemical",
+                "Civil",
+                "CSE",
+                "CSE-AIML",
+                "ECE",
+                "ECE-EVL",
+                "EEE",
+                "IT",
+                "IoT",
+                "Mechanical",
+              ];
+              return knownBranches.includes(storedBranch)
+                ? storedBranch
+                : storedBranch
+                ? "Other"
+                : "";
             })(),
             customBranch: (() => {
               const storedBranch = registrationData.leader?.branch || "";
-              const knownBranches = ["AIDS", "AIML", "Bio-Tech", "Chemical", "Civil", "CSE", "CSE-AIML", "ECE", "ECE-EVL", "EEE", "IT", "IoT", "Mechanical"];
+              const knownBranches = [
+                "AIDS",
+                "AIML",
+                "Bio-Tech",
+                "Chemical",
+                "Civil",
+                "CSE",
+                "CSE-AIML",
+                "ECE",
+                "ECE-EVL",
+                "EEE",
+                "IT",
+                "IoT",
+                "Mechanical",
+              ];
               return knownBranches.includes(storedBranch) ? "" : storedBranch;
             })(),
             rollNumber: registrationData.leader?.rollNumber || "",
@@ -307,7 +398,9 @@ const EditTeamDetails = () => {
       // Check if tech stack is required and valid for small teams
       const techStackValid =
         formData.teamSize >= 3 ||
-        (formData.teamSize < 3 && Array.isArray(formData.techStack) && formData.techStack.length > 0);
+        (formData.teamSize < 3 &&
+          Array.isArray(formData.techStack) &&
+          formData.techStack.length > 0);
 
       // Check if there are no email or phone errors
       const noErrors =
@@ -355,7 +448,7 @@ const EditTeamDetails = () => {
       }));
       return;
     }
-    
+
     if (field === "customDegree") {
       setFormData((prev) => ({
         ...prev,
@@ -367,7 +460,7 @@ const EditTeamDetails = () => {
       }));
       return;
     }
-    
+
     if (field === "branchType") {
       setFormData((prev) => ({
         ...prev,
@@ -380,7 +473,7 @@ const EditTeamDetails = () => {
       }));
       return;
     }
-    
+
     if (field === "customBranch") {
       setFormData((prev) => ({
         ...prev,
@@ -392,7 +485,7 @@ const EditTeamDetails = () => {
       }));
       return;
     }
-    
+
     // Clear phone error when user starts typing
     if (field === "phoneNumber" && phoneErrors.leader) {
       setPhoneErrors((prev) => {
@@ -544,12 +637,13 @@ const EditTeamDetails = () => {
         ...updatedTeammates[index],
         degreeType: value,
         degree: value === "Other" ? "" : value,
-        customDegree: value === "Other" ? updatedTeammates[index].customDegree : "",
+        customDegree:
+          value === "Other" ? updatedTeammates[index].customDegree : "",
       };
       setFormData((prev) => ({ ...prev, teammates: updatedTeammates }));
       return;
     }
-    
+
     if (field === "customDegree") {
       updatedTeammates[index] = {
         ...updatedTeammates[index],
@@ -559,18 +653,19 @@ const EditTeamDetails = () => {
       setFormData((prev) => ({ ...prev, teammates: updatedTeammates }));
       return;
     }
-    
+
     if (field === "branchType") {
       updatedTeammates[index] = {
         ...updatedTeammates[index],
         branchType: value,
         branch: value === "Other" ? "" : value,
-        customBranch: value === "Other" ? updatedTeammates[index].customBranch : "",
+        customBranch:
+          value === "Other" ? updatedTeammates[index].customBranch : "",
       };
       setFormData((prev) => ({ ...prev, teammates: updatedTeammates }));
       return;
     }
-    
+
     if (field === "customBranch") {
       updatedTeammates[index] = {
         ...updatedTeammates[index],
@@ -580,7 +675,6 @@ const EditTeamDetails = () => {
       setFormData((prev) => ({ ...prev, teammates: updatedTeammates }));
       return;
     }
-    
 
     setFormData((prev) => ({ ...prev, teammates: updatedTeammates }));
 
@@ -1026,7 +1120,9 @@ const EditTeamDetails = () => {
 
                   <select
                     value={formData.leader.degreeType || ""}
-                    onChange={(e) => handleLeaderChange("degreeType", e.target.value)}
+                    onChange={(e) =>
+                      handleLeaderChange("degreeType", e.target.value)
+                    }
                     required
                     className="w-full px-4 py-3 rounded-lg border-2 bg-[#403F7D] text-white"
                   >
@@ -1045,13 +1141,14 @@ const EditTeamDetails = () => {
                     <input
                       type="text"
                       value={formData.leader.customDegree}
-                      onChange={(e) => handleLeaderChange("customDegree", e.target.value)}
+                      onChange={(e) =>
+                        handleLeaderChange("customDegree", e.target.value)
+                      }
                       placeholder="Enter your degree"
                       className="w-full px-4 py-3 rounded-lg border-2 bg-[#403F7D] text-white mt-2"
                     />
                   )}
                 </div>
-
 
                 {/* Year of Study */}
                 <div className="space-y-2">
@@ -1095,33 +1192,50 @@ const EditTeamDetails = () => {
 
                   <select
                     value={formData.leader.branchType || ""}
-                    onChange={(e) => handleLeaderChange("branchType", e.target.value)}
+                    onChange={(e) =>
+                      handleLeaderChange("branchType", e.target.value)
+                    }
                     required
                     className="w-full px-4 py-3 rounded-lg border-2 bg-[#403F7D] text-white"
                   >
                     <option value="">Select your branch</option>
-                    <option value="AIDS">AIDS (Artificial Intelligence & Data Science)</option>
-                    <option value="AIML">AIML (Artificial Intelligence & Machine Learning)</option>
+                    <option value="AIDS">
+                      AIDS (Artificial Intelligence & Data Science)
+                    </option>
+                    <option value="AIML">
+                      AIML (Artificial Intelligence & Machine Learning)
+                    </option>
                     <option value="Bio-Tech">Bio-Technology</option>
                     <option value="Chemical">Chemical Engineering</option>
                     <option value="Civil">Civil Engineering</option>
-                    <option value="CSE">CSE (Computer Science & Engineering)</option>
-                    <option value="CSE-AIML">CSE - AIML (Computer Science & AIML)</option>
-                    <option value="ECE">ECE (Electronics & Communication Engineering)</option>
-                    <option value="ECE-EVL">ECE - EVL (Electronics, VLSI & Embedded Systems)</option>
-                    <option value="EEE">EEE (Electrical & Electronics Engineering)</option>
+                    <option value="CSE">
+                      CSE (Computer Science & Engineering)
+                    </option>
+                    <option value="CSE-AIML">
+                      CSE - AIML (Computer Science & AIML)
+                    </option>
+                    <option value="ECE">
+                      ECE (Electronics & Communication Engineering)
+                    </option>
+                    <option value="ECE-EVL">
+                      ECE - EVL (Electronics, VLSI & Embedded Systems)
+                    </option>
+                    <option value="EEE">
+                      EEE (Electrical & Electronics Engineering)
+                    </option>
                     <option value="IT">IT (Information Technology)</option>
                     <option value="IoT">IoT (Internet of Things)</option>
                     <option value="Mechanical">Mechanical Engineering</option>
                     <option value="Other">Other</option>
-
                   </select>
 
                   {formData.leader.branchType === "Other" && (
                     <input
                       type="text"
                       value={formData.leader.customBranch}
-                      onChange={(e) => handleLeaderChange("customBranch", e.target.value)}
+                      onChange={(e) =>
+                        handleLeaderChange("customBranch", e.target.value)
+                      }
                       placeholder="Enter your branch"
                       className="w-full px-4 py-3 rounded-lg border-2 bg-[#403F7D] text-white mt-2"
                     />
@@ -1407,7 +1521,13 @@ const EditTeamDetails = () => {
 
                         <select
                           value={teammate.degreeType || ""}
-                          onChange={(e) => handleTeammateChange(index, "degreeType", e.target.value)}
+                          onChange={(e) =>
+                            handleTeammateChange(
+                              index,
+                              "degreeType",
+                              e.target.value
+                            )
+                          }
                           required
                           className="w-full px-4 py-3 rounded-lg border-2 bg-[#403F7D] text-white"
                         >
@@ -1427,15 +1547,17 @@ const EditTeamDetails = () => {
                             type="text"
                             value={teammate.customDegree}
                             onChange={(e) =>
-                              handleTeammateChange(index, "customDegree", e.target.value)
+                              handleTeammateChange(
+                                index,
+                                "customDegree",
+                                e.target.value
+                              )
                             }
                             placeholder="Enter your degree"
                             className="w-full px-4 py-3 rounded-lg border-2 bg-[#403F7D] text-white mt-2"
-                        />
+                          />
                         )}
-
                       </div>
-
 
                       {/* Year of Study */}
                       <div className="space-y-2">
@@ -1483,24 +1605,48 @@ const EditTeamDetails = () => {
 
                         <select
                           value={teammate.branchType || ""}
-                          onChange={(e) => handleTeammateChange(index, "branchType", e.target.value)}
+                          onChange={(e) =>
+                            handleTeammateChange(
+                              index,
+                              "branchType",
+                              e.target.value
+                            )
+                          }
                           required
                           className="w-full px-4 py-3 rounded-lg border-2 bg-[#403F7D] text-white"
                         >
                           <option value="">Select your branch</option>
-                          <option value="AIDS">AIDS (Artificial Intelligence & Data Science)</option>
-                          <option value="AIML">AIML (Artificial Intelligence & Machine Learning)</option>
+                          <option value="AIDS">
+                            AIDS (Artificial Intelligence & Data Science)
+                          </option>
+                          <option value="AIML">
+                            AIML (Artificial Intelligence & Machine Learning)
+                          </option>
                           <option value="Bio-Tech">Bio-Technology</option>
                           <option value="Chemical">Chemical Engineering</option>
                           <option value="Civil">Civil Engineering</option>
-                          <option value="CSE">CSE (Computer Science & Engineering)</option>
-                          <option value="CSE-AIML">CSE - AIML (Computer Science & AIML)</option>
-                          <option value="ECE">ECE (Electronics & Communication Engineering)</option>
-                          <option value="ECE-EVL">ECE - EVL (Electronics, VLSI & Embedded Systems)</option>
-                          <option value="EEE">EEE (Electrical & Electronics Engineering)</option>
-                          <option value="IT">IT (Information Technology)</option>
+                          <option value="CSE">
+                            CSE (Computer Science & Engineering)
+                          </option>
+                          <option value="CSE-AIML">
+                            CSE - AIML (Computer Science & AIML)
+                          </option>
+                          <option value="ECE">
+                            ECE (Electronics & Communication Engineering)
+                          </option>
+                          <option value="ECE-EVL">
+                            ECE - EVL (Electronics, VLSI & Embedded Systems)
+                          </option>
+                          <option value="EEE">
+                            EEE (Electrical & Electronics Engineering)
+                          </option>
+                          <option value="IT">
+                            IT (Information Technology)
+                          </option>
                           <option value="IoT">IoT (Internet of Things)</option>
-                          <option value="Mechanical">Mechanical Engineering</option>
+                          <option value="Mechanical">
+                            Mechanical Engineering
+                          </option>
                           <option value="Other">Other</option>
                         </select>
 
@@ -1509,13 +1655,16 @@ const EditTeamDetails = () => {
                             type="text"
                             value={teammate.customBranch}
                             onChange={(e) =>
-                              handleTeammateChange(index, "customBranch", e.target.value)
+                              handleTeammateChange(
+                                index,
+                                "customBranch",
+                                e.target.value
+                              )
                             }
                             placeholder="Enter your branch"
                             className="w-full px-4 py-3 rounded-lg border-2 bg-[#403F7D] text-white mt-2"
-                        />
+                          />
                         )}
-
                       </div>
 
                       {/* Roll Number */}
@@ -1658,12 +1807,9 @@ const EditTeamDetails = () => {
             {/* Tech Stack for Small Teams */}
             {formData.teamSize < 3 && (
               <div className="space-y-4">
-                <div
-                  className="p-6 rounded-lg border-l-4 border-blue-400 bg-blue-400/10"
-                  style={{ backgroundColor: "rgba(59, 130, 246, 0.1)" }}
-                >
+                <div className="p-6 rounded-xl border-l-4 border-[#8A86FF] bg-[#8A86FF]/10 backdrop-blur-sm">
                   <h3
-                    className="text-blue-400 font-semibold mb-2 flex items-center space-x-2"
+                    className="text-[#C2C2FF] font-semibold mb-2 flex items-center space-x-2"
                     style={{
                       fontFamily: "'Atkinson Hyperlegible', sans-serif",
                     }}
@@ -1672,31 +1818,35 @@ const EditTeamDetails = () => {
                     <span>Tech Stack of All Your Teammates</span>
                   </h3>
                   <p
-                    className="text-blue-100 text-sm mb-4"
+                    className="text-[#D0CCE3] text-sm mb-4 leading-relaxed"
                     style={{
                       fontFamily: "'Atkinson Hyperlegible', sans-serif",
                     }}
                   >
-                    Since your team has less than 3 members, please select the technical areas you and your teammate(s) are familiar with. This will help us match you with compatible teams if needed.
+                    Since your team has less than 3 members, please select the
+                    technical areas you and your teammate(s) are familiar with.
+                    This will help us match you with compatible teams if needed.
                   </p>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
                     {[
-                      { value: 'frontend', label: 'Frontend' },
-                      { value: 'backend', label: 'Backend' },
-                      { value: 'nosql', label: 'NoSQL DB' },
-                      { value: 'sql', label: 'SQL DB' },
-                      { value: 'aiml', label: 'AI/ML' },
-                      { value: 'blockchain', label: 'Blockchain' },
-                      { value: 'iot', label: 'IoT' }
+                      { value: "frontend", label: "Frontend" },
+                      { value: "backend", label: "Backend" },
+                      { value: "nosql", label: "NoSQL DB" },
+                      { value: "sql", label: "SQL DB" },
+                      { value: "aiml", label: "AI/ML" },
+                      { value: "blockchain", label: "Blockchain" },
+                      { value: "iot", label: "IoT" },
                     ].map((option) => (
                       <label
                         key={option.value}
-                        className={`flex items-center space-x-3 p-3 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:scale-[1.02] ${
+                        className={`w-full flex items-center space-x-3 p-3 rounded-lg border-2 cursor-pointer transition-all duration-300 hover:scale-[1.02] focus-within:ring-2 focus-within:ring-[#8A86FF] ${
                           formData.techStack.includes(option.value)
-                            ? 'border-[#8A86FF] bg-[#8A86FF]/20 shadow-md'
-                            : 'border-[#5E577C] bg-[#403F7D]/30 hover:border-[#8A86FF]/50'
+                            ? "border-[#8A86FF] bg-[#8A86FF]/20 shadow-md"
+                            : "border-[#5E577C] bg-[#403F7D]/30 hover:border-[#8A86FF]/50"
                         }`}
-                        style={{ fontFamily: "'Atkinson Hyperlegible', sans-serif" }}
+                        style={{
+                          fontFamily: "'Atkinson Hyperlegible', sans-serif",
+                        }}
                       >
                         <input
                           type="checkbox"
@@ -1710,24 +1860,32 @@ const EditTeamDetails = () => {
                             } else {
                               setFormData((prev) => ({
                                 ...prev,
-                                techStack: prev.techStack.filter(item => item !== option.value),
+                                techStack: prev.techStack.filter(
+                                  (item) => item !== option.value
+                                ),
                               }));
                             }
                           }}
                           className="w-5 h-5 text-[#8A86FF] bg-[#403F7D] border-[#5E577C] rounded focus:ring-[#8A86FF] focus:ring-2"
                         />
-                        <span className={`text-sm font-medium ${
-                          formData.techStack.includes(option.value) ? 'text-white' : 'text-[#D0CCE3]'
-                        }`}>
+                        <span
+                          className={`text-sm font-medium ${
+                            formData.techStack.includes(option.value)
+                              ? "text-white"
+                              : "text-[#D0CCE3]"
+                          }`}
+                        >
                           {option.label}
                         </span>
                       </label>
                     ))}
                   </div>
                   {(!formData.techStack || formData.techStack.length === 0) && (
-                    <p 
+                    <p
                       className="text-red-400 text-xs mt-2"
-                      style={{ fontFamily: "'Atkinson Hyperlegible', sans-serif" }}
+                      style={{
+                        fontFamily: "'Atkinson Hyperlegible', sans-serif",
+                      }}
                     >
                       Please select at least one technical area
                     </p>
