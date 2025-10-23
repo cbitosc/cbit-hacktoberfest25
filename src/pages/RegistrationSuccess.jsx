@@ -63,7 +63,7 @@ const RegistrationSuccess = () => {
   const discordChannelLink = "https://discord.gg/JjbrMx8td";
   
   // WhatsApp group link - replace with actual link
-  const whatsappGroupLink = "https://chat.whatsapp.com/Ij0kQb7rD3uHqyRxjDkxMK";
+  const whatsappGroupLink = "https://chat.whatsapp.com/L4FLX6YKpJpCC0vPPOLVYI";
 
   // Copy Discord link function
   const copyDiscordLink = async () => {
