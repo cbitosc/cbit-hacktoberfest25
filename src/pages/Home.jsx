@@ -9,6 +9,7 @@ import Faq from "../components/Faq";
 import Contact from "../components/Contact";
 import { StarsBackground } from "../components/ui/stars-background";
 import TimelineComponent from "../components/timeline";
+import ProbStatements from "../components/ProbStatements";
 
 // Background options
 const backgroundStyles = {
@@ -258,6 +259,7 @@ const Home = () => {
         </div>
 
         <About />
+        {/* <ProbStatements /> */}
         <PrepSection />
         <Mentors />
         <TimelineComponent />

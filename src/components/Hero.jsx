@@ -254,7 +254,7 @@ export default function Hero() {
         <div className="mt-0.5 mb-20 flex justify-center">
           {!loading && (
             <Link
-              to={user ? "/register" : "/signin"}
+              to={user ? "/prob" : "/signin"}
               className="group relative inline-block"
             >
               {/* Main button */}
@@ -270,7 +270,7 @@ export default function Hero() {
                 }}
               >
                 <span className="relative z-10">
-                  {user ? "VIEW TEAM DETAILS" : "REGISTER NOW"}
+                  {user ? "SELECT PROBLEM STATEMENTS" : "SIGN IN"}
                 </span>
 
                 {/* Corner brackets */}

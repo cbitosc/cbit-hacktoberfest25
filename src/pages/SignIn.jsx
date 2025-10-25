@@ -139,39 +139,20 @@ const SignIn = () => {
       if (!emailCheck.isUnique) {
         const existingUser = emailCheck.existingUser;
 
-        // If the existing user is a team leader, allow them to sign in
-        if (existingUser && existingUser.role === "leader") {
-          // console.log(
-          //   "Team leader signing in again, redirecting to registration page"
-          // );
-          // Team leaders can sign in and will be redirected to registration success page by the Register component
-          navigate("/register");
-          return;
-        }
-
-        // For non-leaders (teammates), show error and prevent sign-in
-        let errorMessage = "This email address is already registered";
-
-        if (existingUser) {
-          errorMessage += ``;
-          // errorMessage += ` to ${existingUser.name}`;
-          errorMessage += ``;
-          errorMessage +=
-            " as a team member. Only team leaders can sign in to manage their registrations.";
-        }
-
-        setError(
-          errorMessage +
-            " If you believe this is an error, please contact support."
-        );
-
-        // Sign out the user since they can't proceed
-        await auth.signOut();
+        // Registration/editing is closed, but existing users can access problem statements
+        // Redirect directly to problem statements regardless of role
+        console.log("Existing user found, redirecting to problem statements");
+        navigate("/prob");
         return;
       }
 
-      // Email is unique, proceed to register page
-      navigate("/register");
+      // Email is not registered and registration is closed
+      setError(
+        "Registration period has ended. Only registered participants can sign in to access problem statements."
+      );
+
+      // Sign out the user since they can't proceed
+      await auth.signOut();
     } catch (error) {
       console.error("Sign-in error:", error);
       if (error.code === "auth/popup-closed-by-user") {
@@ -237,8 +218,27 @@ const SignIn = () => {
               color: "#D0CCE3",
             }}
           >
-            Sign in to register for the hackathon
+            Sign in to access problem statements
           </p>
+          
+          {/* Registration Status Notice */}
+          <div
+            className="mt-4 p-3 rounded-lg border"
+            style={{
+              backgroundColor: "rgba(255, 193, 7, 0.1)",
+              borderColor: "#FFC107",
+            }}
+          >
+            <p
+              className="text-sm font-medium"
+              style={{
+                color: "#FFE082",
+                fontFamily: "'Atkinson Hyperlegible', sans-serif",
+              }}
+            >
+              ⚠️ New registrations and team editing are closed. Problem selection is still open for registered participants.
+            </p>
+          </div>
         </div>
 
         {/* Sign In Card */}
@@ -303,25 +303,24 @@ const SignIn = () => {
           <div className="mt-8 space-y-4">
             <div
               className="flex items-start space-x-3 p-4 rounded-lg"
-              style={{ backgroundColor: "rgba(138, 134, 255, 0.1)" }}
+              style={{ backgroundColor: "rgba(255, 193, 7, 0.1)" }}
             >
-              <Users className="w-5 h-5 text-[#C2C2FF] flex-shrink-0 mt-0.5" />
+              <AlertTriangle className="w-5 h-5 text-[#FFC107] flex-shrink-0 mt-0.5" />
               <div>
                 <p
                   className="text-white font-semibold mb-1"
                   style={{ fontFamily: "'Atkinson Hyperlegible', sans-serif" }}
                 >
-                  Team Leadership Access
+                  Registration & Editing Closed
                 </p>
                 <p
                   className="text-sm"
                   style={{
-                    color: "#D0CCE3",
+                    color: "#FFE082",
                     fontFamily: "'Atkinson Hyperlegible', sans-serif",
                   }}
                 >
-                  Only team leaders can sign in to register or manage their
-                  teams. Team members will be added by their leaders.
+                  New team registrations and editing existing team details are no longer available. Only registered participants can sign in.
                 </p>
               </div>
             </div>
@@ -330,13 +329,13 @@ const SignIn = () => {
               className="flex items-start space-x-3 p-4 rounded-lg"
               style={{ backgroundColor: "rgba(138, 134, 255, 0.1)" }}
             >
-              <Mail className="w-5 h-5 text-[#C2C2FF] flex-shrink-0 mt-0.5" />
+              <UserCheck className="w-5 h-5 text-[#C2C2FF] flex-shrink-0 mt-0.5" />
               <div>
                 <p
                   className="text-white font-semibold mb-1"
                   style={{ fontFamily: "'Atkinson Hyperlegible', sans-serif" }}
                 >
-                  Primary Communication
+                  Problem Statement Access
                 </p>
                 <p
                   className="text-sm"
@@ -345,8 +344,7 @@ const SignIn = () => {
                     fontFamily: "'Atkinson Hyperlegible', sans-serif",
                   }}
                 >
-                  Your Google account email will be used for all team
-                  communications and updates.
+                  Registered participants can access and select problem statements. Team leaders and members both have access.
                 </p>
               </div>
             </div>
