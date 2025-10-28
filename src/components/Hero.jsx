@@ -3,11 +3,12 @@ import hfestlogo from "../assets/hfestlogo.gif";
 // import transparentLogo from "../assets/TransparentBorderlessLogo.svg";
 import transparentLogo from "../assets/TransparentLogo.svg";
 import Waves from "./ui/Waves";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
 export default function Hero() {
   const { user, loading } = useAuth();
+  const navigate = useNavigate();
   const [flickeringLetters, setFlickeringLetters] = useState({});
   const [decodingText, setDecodingText] = useState("");
 
@@ -114,14 +115,12 @@ export default function Hero() {
 
     return () => clearInterval(interval);
   }, []);
-  const [isSignedIn, setIsSignedIn] = useState(false);
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user"); // adjust key if different
-    if (storedUser) {
-      setIsSignedIn(true);
-    }
-  }, []);
+  // Handle button click to navigate to feedback
+  const handleFeedbackClick = (e) => {
+    e.preventDefault();
+    navigate("/feedback");
+  };
 
   return (
     <div
@@ -253,8 +252,8 @@ export default function Hero() {
         </div>
         <div className="mt-0.5 mb-20 flex justify-center">
           {!loading && (
-            <Link
-              to={user ? "/prob" : "/signin"}
+            <button
+              onClick={handleFeedbackClick}
               className="group relative inline-block"
             >
               {/* Main button */}
@@ -270,7 +269,7 @@ export default function Hero() {
                 }}
               >
                 <span className="relative z-10">
-                  {user ? "SELECT PROBLEM STATEMENTS" : "SIGN IN"}
+                  SHARE FEEDBACK
                 </span>
 
                 {/* Corner brackets */}
@@ -289,7 +288,7 @@ export default function Hero() {
                   boxShadow: "0 0 6px rgba(194,194,255,0.3)",
                 }}
               />
-            </Link>
+            </button>
           )}
         </div>
       </div>
